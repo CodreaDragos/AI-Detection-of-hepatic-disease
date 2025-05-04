@@ -1,26 +1,26 @@
-# Brain Cancer Detection from Multi-View Medical Imaging
+# Liver Analysis from Multi-View Medical Imaging
 
-This project implements a deep learning solution for detecting brain cancer from medical images across different viewing angles (coronal, sagittal, and transverse).
+This project implements a deep learning solution that performs both liver segmentation and cancer detection from medical images across different viewing angles (coronal, sagittal, and transverse).
 
 ## Model Performance
 
-- Test Accuracy: 90.66%
-- AUC Score: 0.9897
+Current model performance:
+- Segmentation Accuracy: 90.66%
+- Cancer Detection AUC: 0.9897
 - Early stopping at epoch 68 with optimal validation accuracy
 
 ## Features
 
-- Multi-class classification across 6 categories:
-  - Cancer - Coronal view
-  - Cancer - Sagittal view
-  - Cancer - Transverse view
-  - Normal - Coronal view
-  - Normal - Sagittal view
-  - Normal - Transverse view
+- Dual functionality:
+  1. Semantic segmentation of liver regions
+  2. Binary classification for cancer detection
+- Multi-view analysis (coronal, sagittal, transverse)
 - Data augmentation for improved model robustness
 - Advanced visualization tools for result analysis
 - Early stopping and learning rate scheduling
-- Comprehensive performance metrics
+- Comprehensive performance metrics including:
+  - IoU (Intersection over Union) for segmentation
+  - AUC and accuracy for cancer detection
 
 ## Project Structure
 
@@ -42,10 +42,21 @@ This project implements a deep learning solution for detecting brain cancer from
 ## Dataset
 
 The model was trained on:
-- 20,643 training images
-- 1,970 validation images
-- 985 test images
-Across 6 classes combining cancer/normal status with viewing angles.
+- Training images
+- Validation images
+- Test images
+Each image is annotated with:
+- Liver segmentation masks
+- Binary cancer labels (present/absent)
+Across different viewing angles (coronal, sagittal, transverse)
+
+## Technical Details
+
+- GPU: NVIDIA GeForce RTX 3050 Ti Laptop GPU (1640MB memory)
+- Image size: 128x128 (optimized for memory constraints)
+- Python version: 3.10
+- CUDA version: 11.0
+- cuDNN version: 8.1.0
 
 ## Requirements
 
@@ -77,23 +88,36 @@ pip install -r requirements.txt
 
 ## Model Architecture
 
-The model uses a CNN architecture with:
-- Multiple convolutional and max pooling layers
+The model uses a hybrid architecture combining:
+1. U-Net backbone for segmentation:
+   - Encoder path with convolutional and pooling layers
+   - Decoder path with upsampling and skip connections
+   - Final segmentation mask output
+2. Classification head for cancer detection:
+   - Features extracted from segmentation encoder
+   - Additional convolutional layers
+   - Binary classification output
+
+Common components:
+- Batch normalization for training stability
 - Dropout for regularization
-- Dense layers for classification
-- Softmax output for 6-class prediction
+- Shared feature learning between tasks
 
 ## Performance Optimization
 
-- Data augmentation (rotation, shifts, flips)
+- Data augmentation (rotation, shifts, flips, brightness adjustment)
 - Early stopping to prevent overfitting
 - Dynamic learning rate scheduling
 - GPU acceleration support
+- Memory-optimized image size
+- Multi-task learning optimization
 
 ## Results Visualization
 
 The visualization script provides:
 - Training/validation metrics plots
-- Confusion matrix
-- Sample predictions with probability distributions
-- Detailed analysis of individual predictions 
+- Segmentation mask overlays
+- IoU scores per image
+- Cancer detection confidence scores
+- ROC curves for cancer classification
+- Combined analysis of segmentation and classification results 
