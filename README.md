@@ -1,51 +1,99 @@
-# AI Detection of Hepatic Disease
+# Brain Cancer Detection from Multi-View Medical Imaging
 
-This project utilizes deep learning to detect and classify different hepatic (liver) diseases from medical images.
+This project implements a deep learning solution for detecting brain cancer from medical images across different viewing angles (coronal, sagittal, and transverse).
+
+## Model Performance
+
+- Test Accuracy: 90.66%
+- AUC Score: 0.9897
+- Early stopping at epoch 68 with optimal validation accuracy
 
 ## Features
 
-- Liver image classification into multiple categories:
-  - Homogeneous Liver (Normal)
-  - Liver Tumor
-  - Liver Hemangioma
-  - Liver Cyst
-- Training pipeline for custom models
-- Visualization tools for model analysis and results interpretation
+- Multi-class classification across 6 categories:
+  - Cancer - Coronal view
+  - Cancer - Sagittal view
+  - Cancer - Transverse view
+  - Normal - Coronal view
+  - Normal - Sagittal view
+  - Normal - Transverse view
+- Data augmentation for improved model robustness
+- Advanced visualization tools for result analysis
+- Early stopping and learning rate scheduling
+- Comprehensive performance metrics
 
 ## Project Structure
 
-- `main.py`: Main application entry point
-- `visualize_results.py`: Tools for visualizing model predictions and performance
-- `src/`: Source code directory
-  - `model.py`: Neural network model definition
-  - `train.py`: Training pipeline
-  - `predict.py`: Prediction utilities
-  - `data_analysis.py`: Data analysis tools
-  - `data_organization.py`: Dataset organization utilities
-  - `config.py`: Configuration parameters
-  - `train_and_predict.py`: Combined training and prediction pipeline
+- `main.py`: Training script with model architecture and training pipeline
+- `visualize_results.py`: Visualization and analysis tools
+- `decode-files.py`: DICOM medical image decoder
+- Data directories:
+  - `train/`: Training dataset
+  - `valid/`: Validation dataset
+  - `test/`: Test dataset
+- Model files:
+  - `trained_model.h5`: Latest trained model
+  - `best_model.h5`: Best performing model backup
+- Results:
+  - `training_history.npz`: Saved training metrics
+  - `results/`: Generated visualizations and analysis
+  - `predictions/`: Model predictions
+
+## Dataset
+
+The model was trained on:
+- 20,643 training images
+- 1,970 validation images
+- 985 test images
+Across 6 classes combining cancer/normal status with viewing angles.
 
 ## Requirements
 
-Required packages are listed in `requirements.txt`
+Required packages are listed in `requirements.txt`. Install using:
 
-```
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
 ## Usage
 
-1. Prepare your dataset in the appropriate format
-2. Configure parameters in `src/config.py`
-3. Train the model using:
+1. Activate the virtual environment:
+   ```bash
+   venv\Scripts\activate  # On Windows
+   source venv/bin/activate  # On Unix/MacOS
    ```
-   python src/train.py
+
+2. Train the model:
+   ```bash
+   python main.py
    ```
-4. Evaluate and visualize results:
-   ```
+
+3. Visualize results:
+   ```bash
    python visualize_results.py
    ```
 
-## Note
+## Model Architecture
 
-Training data, test data, validation data, and results are not included in this repository due to NDA restrictions. 
+The model uses a CNN architecture with:
+- Multiple convolutional and max pooling layers
+- Dropout for regularization
+- Dense layers for classification
+- Softmax output for 6-class prediction
+
+## Performance Optimization
+
+- Data augmentation (rotation, shifts, flips)
+- Early stopping to prevent overfitting
+- Dynamic learning rate scheduling
+- GPU acceleration support
+
+## Results Visualization
+
+The visualization script provides:
+- Training/validation metrics plots
+- Confusion matrix
+- Sample predictions with probability distributions
+- Detailed analysis of individual predictions 
