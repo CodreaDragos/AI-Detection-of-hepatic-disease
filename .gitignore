@@ -44,6 +44,7 @@ liver_diseases/train/
 *.xls
 *.pdf
 comenzi.txt
+studies/
 
 # Jupyter Notebook
 .ipynb_checkpoints

@@ -1,0 +1,11 @@
+Requirement already satisfied: numpy in c:\users\cobra\desktop\fac\an3sem2\ira2\proiect ira2\venv\lib\site-packages (1.21.6)
+Collecting numpy
+  Downloading numpy-2.2.5-cp310-cp310-win_amd64.whl.metadata (60 kB)
+Downloading numpy-2.2.5-cp310-cp310-win_amd64.whl (12.9 MB)
+   ---------------------------------------- 12.9/12.9 MB 13.1 MB/s eta 0:00:00
+Installing collected packages: numpy
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.21.6
+    Uninstalling numpy-1.21.6:
+      Successfully uninstalled numpy-1.21.6
+Successfully installed numpy-2.2.5
