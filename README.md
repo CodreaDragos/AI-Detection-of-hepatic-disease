@@ -60,11 +60,18 @@ liver_diseases/
 └── requirements.txt
 ```
 
+## Technical Details
+- GPU: NVIDIA GeForce RTX 3050 Ti Laptop GPU (1640MB memory)
+- Image size: 128x128 (optimized for memory constraints)
+- Python version: 3.10
+- CUDA version: 11.0
+- cuDNN version: 8.1.0
+
 ## Setup and Installation
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone https://github.com/CodreaDragos/AI-Detection-of-hepatic-disease.git
 ```
 
 2. Create and activate a virtual environment:
@@ -85,12 +92,10 @@ pip install -r requirements.txt
 ```bash
 cd liver_analysis
 ```
-
 2. Train the model:
 ```bash
 python train_model.py
 ```
-
 3. Evaluate the model:
 ```bash
 python evaluate_model.py
@@ -101,12 +106,10 @@ python evaluate_model.py
 ```bash
 cd liver_diseases
 ```
-
 2. Train the model:
 ```bash
 python train_model.py
 ```
-
 3. Evaluate the model:
 ```bash
 python evaluate_model.py
@@ -125,4 +128,4 @@ python evaluate_model.py
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contributing
-Contributions are welcome! Please feel free to submit a Pull Request. 
+Contributions are welcome! Please feel free to submit a Pull Request.
