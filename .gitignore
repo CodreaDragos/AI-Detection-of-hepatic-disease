@@ -1,0 +1,75 @@
+# Folders containing sensitive data (NDA)
+test/
+train/
+valid/
+sample_images/
+results/
+
+# Model files
+*.h5
+*.hdf5
+*.model
+training_history.npz
+class_mapping.npy
+*.pb
+*.index
+*.data-00000-*
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project specific
+liver_analysis/test/
+liver_analysis/valid/
+liver_analysis/train/
+liver_diseases/test/
+liver_diseases/valid/
+liver_diseases/train/
+*.xlsx
+*.xls
+*.pdf
+comenzi.txt
+studies/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Model files
+*.pkl
+*.joblib
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Evaluation results
+evaluation_results/
+**/evaluation_results/
